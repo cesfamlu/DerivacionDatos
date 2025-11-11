@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Derivaciones Médicas - CESFAM La Unión</title>
+    <title>Sistema de Datos de Derivaciones Médicas - CESFAM La Unión</title>
 
 
     <link rel="icon" type="image/png" sizes="32x32" href="1.5.png">
@@ -1128,22 +1128,6 @@
     "tipo": "Procedimiento",
     "via": "RAS",
     "detalle": "OA",
-    "destino": "Hospital Base Valdivia",
-    "ges": "No",
-    "descripcion": "Ecotomografía abdominal menores de 15 años"
-  },
-  {
-    "tipo": "Procedimiento",
-    "via": "RAS",
-    "detalle": "OA",
-    "destino": "Hospital La Union",
-    "ges": "No",
-    "descripcion": "Ecotomografía abdominal de 15 y más"
-  },
-  {
-    "tipo": "Procedimiento",
-    "via": "RAS",
-    "detalle": "OA",
     "destino": "CESFAM La Unión",
     "ges": "No",
     "descripcion": "Ecotomografía bilateral"
@@ -1311,7 +1295,7 @@
   {
     "tipo": "Especialidad",
     "via": "HD",
-    "detalle": "Telemedicina",
+    "detalle": "Telemedicina ",
     "destino": "Hospital Digital",
     "ges": "Si",
     "descripcion": "Nefrología Enfermedad Renal Crónica (ERC) (Adicionalmente, realizar la notificacion de papel para presentarla en oficina GES: Origen CESFAM. Destino CESFAM)"
@@ -1442,15 +1426,15 @@
     "tipo": "Patología",
     "via": "RAS",
     "detalle": "IC",
-    "destino": "CESFAM La Unión",
+    "destino": "Hospital Valdivia",
     "ges": "No",
     "descripcion": "Sospecha Hipoacusia de 15 a 64 años (Una vez resuelto ese tramo etario se puede resolver de 5 a 14 años de edad (Siempre coordinado con Leonor Villavicencio, referente del programa) "
   },
   {
     "tipo": "Patología",
-    "via": "GES",
-    "detalle": "Oficina GES",
-    "destino": "Variable",
+    "via": "Lista de Espera",
+    "detalle": "Oficina GES gestionará la hora",
+    "destino": "Hospital Valdivia",
     "ges": "Si",
     "descripcion": "Sospecha Hipoacusia mayores de 65 años (y todos los otros diagnósticos y tramos de edades que no se resuelven en APS)"
   },
@@ -1580,7 +1564,7 @@
     "tipo": "Procedimiento",
     "via": "RAS",
     "detalle": "OA",
-    "destino": "",
+    "destino": "CESFAM La Union",
     "ges": "Si",
     "descripcion": "Fondo de Ojo para Usuarios con Diabetes Mellitus Tipo 2 (Se llama: Control Paciente DM Tipo 2 Nivel Secundario, pero permite acceso a \"Fondo de Ojo\")"
   },
@@ -1598,7 +1582,7 @@
     "via": "GES",
     "detalle": "GES",
     "destino": "Oficina GES",
-    "ges": "Si",
+    "ges": "No",
     "descripcion": "Artrosis - Leve a Moderada (CESFAM) (Dx: \"Tratamiento médico en personas de 55 años y más con artrosis de cadera y/o rodilla, leve o moderada\")"
   },
   {
@@ -1680,7 +1664,7 @@
     "detalle": "SIC Papel",
     "destino": "Hospital La Union",
     "ges": "Si",
-    "descripcion": "Colelitiasis  desde 35 a menor de 50 años (confirmado \"notificar\" Derivacion con examenes tomados, revisados y compensados IMC <40)",
+    "descripcion": "Colelitiasis Diagnostico Sólo por Observacion edad: mayor a 35 y menor a 50 años ",
     "imagen": "https://placehold.co/80x80/198754/ffffff?text=GES"
   },
 
@@ -1707,7 +1691,7 @@
   {
     "tipo": "Patología",
     "via": "GES",
-    "detalle": "Notificacion + receta",
+    "detalle": "Notificar GES Asma -> Luego proceder con la SIC",
     "destino": "Hospital Base Valdivia",
     "ges": "Si",
     "descripcion": "Asma Bronquial 15 años y mas "
@@ -1715,7 +1699,7 @@
   {
     "tipo": "Patología",
     "via": "GES",
-    "detalle": "SIC Papel",
+    "detalle": "Notificar GES Asma -> Luego proceder con la SIC",
     "destino": "Hospital Base Valdivia",
     "ges": "Si",
     "descripcion": "Asma Bronquial moderada y severa en menores de 15 años "
@@ -1731,7 +1715,7 @@
   {
     "tipo": "Patología",
     "via": "GES",
-    "detalle": "Receta papel",
+    "detalle": "Notificar GES Asma -> Luego proceder con la SIC",
     "destino": "CESFAM",
     "ges": "No",
     "descripcion": "Ayudas Tecnicas Pilotos de 46 años a 64 años( siguientes dignosticos: acv severo, acv moderado, acv leve, artrosis de rodilla, amputaciones ortejo y metatardo, postrados(severos) Parkinson y Lesion Medular)"
@@ -1740,7 +1724,7 @@
     "tipo": "Patología",
     "via": "GES",
     "detalle": "SIC Papel",
-    "destino": "Hospital Base Valdivia",
+    "destino": "Hospital Base Valdivia - Gastroentereologo",
     "ges": "Si",
     "descripcion": "Cancer Colorectal en personas de 15 años y mas (formulario de solicitud colonosocpia)",
     "imagen": "https://placehold.co/80x80/198754/ffffff?text=GES"
@@ -1820,10 +1804,10 @@
   },
   {
     "tipo": "Patología",
-    "via": "",
+    "via": "SIC",
     "detalle": "",
     "destino": "",
-    "ges": "Si",
+    "ges": "No",
     "descripcion": "Glaucoma"
   },
   {
@@ -1845,8 +1829,8 @@
   {
     "tipo": "Patología",
     "via": "",
-    "detalle": "",
-    "destino": "",
+    "detalle": "Formualrio Notifiacion por sospecha o confirmación",
+    "destino": "Oficina GES",
     "ges": "Si",
     "descripcion": "Alzheimer y otras Demencias (GES 85)"
   },

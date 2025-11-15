@@ -1,0 +1,707 @@
+:root {
+    --color-primary: #0d6efd;
+    --color-success: #198754;
+    --color-info: #0dcaf0;
+    --color-warning: #ffc107;
+    --color-danger: #dc3545;
+    --color-medical: #2c5f7d;
+    --color-medical-light: #4a90b8;
+    
+    /* (Req #2) CSS Tokens */
+    --radius-lg: 14px;
+    --shadow-1: 0 2px 8px rgba(0,0,0,.06);
+    --shadow-2: 0 8px 24px rgba(0,0,0,.12);
+    /* (Req #2) Densidad compacta opcional */
+    --pad-y:.9rem; 
+    --pad-x:1.1rem;
+
+    /* --- INICIO: Inspiración de paleta de colores --- */
+    --color-primary: #0066cc; /* Sobrescribe el azul de bootstrap */
+    --color-primary-dark: #127986e8;
+    --color-primary-light: #3385d6;
+    --color-clinical: #0066cc;
+    --color-clinical-light: #e6f2ff;
+    --color-admin: #7c3aed;
+    --color-admin-light: #f3e8ff;
+    --color-support: #059669;
+    --color-support-light: #d1fae5;
+    --color-success: #10b981; /* Sobrescribe success */
+    --color-warning: #f59e0b; /* Sobrescribe warning */
+    --color-error: #ef4444; /* Sobrescribe danger */
+    --color-info: #3b82f6; /* Sobrescribe info */
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-200: #e5e7eb;
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-600: #4b5563;
+    --color-gray-700: #374151;
+    --color-gray-800: #1f2937;
+    --color-gray-900: #111827;
+    /* --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */ /* No es necesario, ya se usa Inter */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    /* --- FIN: Inspiración de paleta de colores --- */
+}
+
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex; /* (Req) Para footer pegajoso */
+    flex-direction: column; /* (Req) Para footer pegajoso */
+}
+
+/* (Req) Contenedor principal para empujar el footer */
+.main-content {
+    flex-grow: 1;
+}
+
+/* (Req #2) Afinar tipografía */
+h1,h2,h3{ letter-spacing: -.02em }
+.lead{ color:#eef6ff; opacity:.9 }
+
+/* (Req #2) Header + Franja institucional (Código anterior) */
+.header-section {
+    background: linear-gradient(135deg, #2f6482 0%, #376b8a 100%); /* (Punto 2) */
+    color: white;
+    padding: 2rem 20; /* (Req) Aumentado a 2rem para más espacio */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* (Punto 2) */
+    position: relative; 
+    border-bottom: none;
+}
+ 
+.header-section::after{
+  content:""; 
+  position:absolute; left:0; right:0; bottom:0; 
+  height: 4px; /* (Punto 3) */
+  background: linear-gradient(to right, #e6b800 0%, #2f7bff 100%); /* (Punto 3) */
+  opacity:.95;
+}
+
+.header-section h1 {
+    font-size: 1.8rem; 
+    font-weight: 700;
+    margin: 0;
+    color: #f0f4f8; /* (Punto 4) */
+}
+
+.header-section p {
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
+    font-size: 1.1rem;
+    color: #e5ecf1; /* (Punto 4) */
+    font-weight: 500; /* (Punto 4) */
+}
+/* Fin de estilos de header anterior */
+
+
+.filter-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-1);
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 0.6rem 1rem;
+    transition: all 0.3s ease;
+    background: #fff; 
+    backdrop-filter: blur(2px);
+}
+
+.search-input:focus {
+    border-color: var(--color-medical);
+    box-shadow: 0 0 0 0.2rem rgba(44, 95, 125, 0.15);
+}
+
+.filter-select {
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 0.6rem 1rem;
+    transition: all 0.3s ease;
+    background: #fff; 
+    backdrop-filter: blur(2px);
+}
+
+.filter-select:focus {
+    border-color: var(--color-medical);
+    box-shadow: 0 0 0 0.2rem rgba(44, 95, 125, 0.15);
+}
+
+/* (Req #2) Botones filtro: estado activo más claro */
+.btn-filter {
+    border-radius: 10px;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: #333;
+    border:1.5px solid rgba(13,110,253,.15);
+    background:#fff;
+}
+
+.btn-filter.active{
+    background: linear-gradient(135deg,#eaf2ff,#dbeafe);
+    border-color: var(--color-primary);
+    color: #000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+ 
+.btn-outline-success, .btn-outline-primary, .btn-outline-danger, .btn-outline-secondary {
+  border-width: 1.5px
+}
+.btn-outline-success:active, .btn-outline-primary:active, .btn-outline-danger:active, .btn-outline-secondary:active {
+  transform: translateY(1px);
+}
+
+/* (Req #3) KPI Bar */
+.results-info {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+}
+
+/* (Req #2) Cards */
+.card-referral {
+    border: none;
+    border-radius: var(--radius-lg); 
+    box-shadow: var(--shadow-1);
+    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative; /* (Req #2) */
+}
+ 
+/* (Req #2) Banda de color por tipo */
+.card-referral::before{
+  content:""; 
+  position:absolute; 
+  inset:0 0 auto 0; 
+  height:4px; 
+  display:block;
+  background: var(--tipo-color, var(--color-medical));
+}
+
+.card-referral:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-2);
+}
+
+/* (Req #2) Card Header Compacto */
+.card-header-custom {
+    padding: .75rem 1rem;
+    border-bottom: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: #fff;
+}
+
+.badge-tipo-especialidad {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.badge-tipo-procedimiento {
+    background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+}
+
+.badge-tipo-patologia {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.badge-ges-si {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #000;
+}
+
+.badge-ges-no {
+    background: linear-gradient(135deg, #868f96 0%, #596164 100%);
+}
+
+/* (Req #2) Badges ligeramente menos saturadas */
+.badge-custom {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: white;
+    filter: saturate(.92);
+}
+
+.card-body-custom {
+    padding: var(--pad-y) var(--pad-x);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.card-body-custom .info-container {
+    flex-grow: 1;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.info-row i {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    color: var(--color-medical);
+    min-width: 25px;
+    padding-top: 2px;
+    opacity:.8; 
+    transform: translateY(1px);
+}
+
+.info-label {
+    font-weight: 600;
+    color: #2c3e50; 
+    margin-right: 0.5rem;
+}
+
+.info-value {
+    color: #212529;
+}
+
+.image-papel {
+    max-width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+ 
+.image-papel:hover {
+    transform: scale(1.1);
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-1);
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: #6c757d;
+    margin-bottom: 1rem;
+}
+
+/* ----- INICIO CAMBIO FOOTER ----- */
+/* Eliminado: .footer-section (azul) */
+
+.view-toggle {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.table-view {
+    display: none;
+}
+ 
+/* (Req #2) Tabla "Enterprise" */
+.table-responsive{ 
+    max-height: 70vh; 
+    border-radius: 10px;
+    box-shadow: var(--shadow-1);
+}
+ 
+.table-view table {
+    background: white;
+    overflow: hidden;
+    margin-bottom: 0; 
+}
+
+.table-view thead {
+    background: var(--color-medical);
+    color: white;
+}
+ 
+.table-view thead th {
+    position: sticky; 
+    top: 0; 
+    z-index: 1;
+    background: var(--color-medical); 
+}
+
+.table-view th {
+    font-weight: 600;
+    padding: var(--pad-y) var(--pad-x);
+}
+
+.table-view td {
+    padding: var(--pad-y) var(--pad-x);
+    vertical-align: middle;
+}
+ 
+.table tbody tr:hover{ 
+    background: #f6fbff; 
+}
+
+/* (Req 1) Estilos para el logo en el header */
+.header-logo {
+    max-height: 160px; /* Reducido para el nuevo header */
+    width: auto;   
+    max-width: 100%;  
+    object-fit: contain;
+}
+ 
+/* (Req #6) Estilos para el header (inspirado) */
+.main-header {
+    /* Se quita el sticky de aquí */
+}
+
+/* (Req #8) Barra negra sticky */
+.header-top {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-2); /* Sombra para la barra pegajosa */
+}
+
+.header-main {
+    /* De bg-white a gradiente */
+    background: linear-gradient(135deg, #003d82 0%, var(--color-primary) 100%);
+    color: white;
+}
+ 
+.header-main h1, .header-main h2 {
+    color: white; /* Asegura texto blanco en fondo azul */
+}
+ 
+/* (Req #9) H1 y H2 movidos levemente a la izquierda */
+.header-main h1 {
+    margin-left: -90px; /* Ajustado de -70px */
+}
+.header-main h2 {
+    margin-left: -90px; /* Añadido para alinear con H1 */
+}
+/* Fin (Req #9) */
+ 
+/* Nueva Vista Gráfica para KPIs */
+.kpi-bars { width: 100%; }
+.kpi-bars .kpi-group { margin-bottom: 0.75rem; }
+.kpi-bars .kpi-group-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+.kpi-bars .kpi-bar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+    font-size: 0.8rem;
+}
+.kpi-bars .kpi-bar-label {
+    width: 100px; /* Ancho fijo para alinear etiquetas */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 10px;
+    color: #333;
+}
+.kpi-bars .kpi-bar-track {
+    flex-grow: 1;
+    background: #e9ecef;
+    border-radius: 4px;
+    height: 18px;
+    overflow: hidden;
+    position: relative;
+}
+.kpi-bars .kpi-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.kpi-bars .kpi-bar-value {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    padding: 0 0.5rem;
+}
+.kpi-bars .text-dark {
+    color: #000 !important;
+}
+
+/* (Req #7) Footer Nuevo */
+.main-footer { 
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+    color: white; 
+    margin-top: auto; /* (Req) Esto es clave para el footer pegajoso */
+    padding: var(--spacing-2xl) 0 var(--spacing-lg); 
+}
+.footer-content { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: var(--spacing-2xl); 
+    margin-bottom: var(--spacing-2xl); 
+}
+.footer-section { 
+    display: flex; 
+    flex-direction: column; 
+    gap: var(--spacing-md); 
+}
+.footer-title { 
+    font-size: 1.125rem; 
+    font-weight: var(--font-weight-bold); 
+    margin-bottom: var(--spacing-sm); 
+    color: white; 
+}
+.footer-text { 
+    font-size: 0.875rem; 
+    color: rgba(255, 255, 255, 0.8); 
+    line-height: 1.6; 
+    display: flex; 
+    align-items: center; 
+    gap: var(--spacing-sm); 
+}
+/* Icono de Bootstrap en vez de SVG custom */
+.footer-text i {
+    font-size: 1.125rem;
+    flex-shrink: 0;
+    opacity: 0.8;
+}
+.footer-links { 
+    list-style: none; 
+    padding: 0; /* Reset de padding */
+    margin: 0; /* Reset de margin */
+    display: flex; 
+    flex-direction: column; 
+    gap: var(--spacing-sm); 
+}
+.footer-link { 
+    color: rgba(255, 255, 255, 0.8); 
+    text-decoration: none; 
+    font-size: 0.875rem; 
+    transition: all 0.2s ease; /* Transición genérica */
+    display: inline-block; 
+}
+.footer-link:hover { 
+    color: white; 
+    transform: translateX(4px); 
+}
+.footer-bottom { 
+    padding-top: var(--spacing-xl); 
+    border-top: 1px solid rgba(255, 255, 255, 0.1); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: var(--spacing-md); 
+}
+.footer-copyright { 
+    font-size: 0.875rem; 
+    color: rgba(255, 255, 255, 0.7); 
+}
+.footer-meta { 
+    display: flex; 
+    align-items: center; 
+    gap: var(--spacing-md); 
+    font-size: 0.75rem; 
+    color: rgba(255, 255, 255, 0.6); 
+}
+.footer-separator { opacity: 0.5; }
+/* Fin (Req #7) Footer */
+
+
+@media (max-width: 768px) {
+    /* (Req #6) Ajustes responsivos para el nuevo header */
+    .header-top {
+        font-size: 0.8rem;
+        /* El sticky también aplica en móvil */
+    }
+    .header-top .header-info {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+    .header-top .header-user {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .header-main .row {
+        justify-content: center;
+        text-align: center;
+    }
+    .header-main h1 {
+        font-size: 1.3rem;
+        margin-left: 0; /* (Req) Resetear margen en móvil */
+    }
+    .header-main h2 {
+        font-size: 1.0rem;
+        margin-left: 0; /* (Req) Resetear margen en móvil */
+    }
+    .header-logo {
+        max-height: 110px; /* (Req) Aumentado de 60px */
+    }
+    /* Fin (Req #6) */
+
+    .filter-section {
+        padding: 1rem;
+    }
+
+    .btn-filter {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+    .results-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+     
+    .card-referral {
+         margin-bottom: 1rem;
+    }
+     
+    .kpi-bars .kpi-bar-label {
+        width: 80px; /* Menos espacio en móvil */
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+/* (Req #2) Densidad compacta */
+.compact .card-body-custom { 
+    padding: calc(var(--pad-y)*.7) calc(var(--pad-x)*.7); 
+}
+.compact .table-view td, .compact .table-view th { 
+    padding: .6rem .75rem; 
+}
+.compact .info-row {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.compact .info-label {
+    font-size: 0.9rem;
+}
+.compact .info-value {
+    font-size: 0.9rem;
+}
+.compact .badge-custom {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+ 
+/* (Req #2) Accesibilidad y motion */
+:focus-visible{
+  outline: 3px solid rgba(13,110,253,.35);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+ 
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* --- Custom UI improvements: mini-bar, cards scroll, back-to-top, pagination --- */
+/* Sticky mini bar that stays near the top of the viewport when scrolling. */
+.mini-bar {
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--shadow-1);
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 3.5rem; /* leave space for the sticky top header */
+    z-index: 90;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.mini-bar input {
+    min-width: 150px;
+}
+
+/* Container around the cards view that adds an internal scroll like the table. */
+.cards-container {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+/* Floating back-to-top button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 300;
+    display: none;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-2);
+}
+
+.back-to-top i {
+    margin: 0;
+}
+
+/* Pagination control styles */
+.pagination-controls button {
+    margin: 0 0.25rem;
+}
+
+.pagination-controls button.active {
+    font-weight: bold;
+}

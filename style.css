@@ -12,8 +12,8 @@
     --shadow-1: 0 2px 8px rgba(0,0,0,.06);
     --shadow-2: 0 8px 24px rgba(0,0,0,.12);
     /* (Req #2) Densidad compacta opcional */
-    --pad-y:.9rem; 
-    --pad-x:1.1rem;
+    --pad-y: 0.6rem; 
+    --pad-x: 0.8rem;
 
     /* --- INICIO: Inspiración de paleta de colores --- */
     --color-primary: #0066cc; /* Sobrescribe el azul de bootstrap */
@@ -189,7 +189,7 @@ h1,h2,h3{ letter-spacing: -.02em }
     border-radius: var(--radius-lg); 
     box-shadow: var(--shadow-1);
     transition: all 0.3s ease;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -214,13 +214,13 @@ h1,h2,h3{ letter-spacing: -.02em }
 
 /* (Req #2) Card Header Compacto */
 .card-header-custom {
-    padding: .75rem 1rem;
+    padding: 0.5rem 0.7rem;
     border-bottom: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.4rem;
     background: #fff;
 }
 
@@ -247,10 +247,10 @@ h1,h2,h3{ letter-spacing: -.02em }
 
 /* (Req #2) Badges ligeramente menos saturadas */
 .badge-custom {
-    padding: 0.5rem 1rem;
+    padding: 0.35rem 0.7rem;
     border-radius: 10px;
     font-weight: 600;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: white;
     filter: saturate(.92);
 }
@@ -269,18 +269,18 @@ h1,h2,h3{ letter-spacing: -.02em }
 .info-row {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 1rem;
-    padding: 0.75rem;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem;
     background: #f8f9fa;
     border-radius: 8px;
     border: 1px solid #eee;
 }
 
 .info-row i {
-    font-size: 1.2rem;
-    margin-right: 0.75rem;
+    font-size: 1rem;
+    margin-right: 0.5rem;
     color: var(--color-medical);
-    min-width: 25px;
+    min-width: 20px;
     padding-top: 2px;
     opacity:.8; 
     transform: translateY(1px);
@@ -290,15 +290,17 @@ h1,h2,h3{ letter-spacing: -.02em }
     font-weight: 600;
     color: #2c3e50; 
     margin-right: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .info-value {
     color: #212529;
+    font-size: 0.9rem;
 }
 
 .image-papel {
-    max-width: 80px;
-    height: 80px;
+    max-width: 60px;
+    height: 60px;
     object-fit: cover;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -620,24 +622,24 @@ h1,h2,h3{ letter-spacing: -.02em }
  
 /* (Req #2) Densidad compacta */
 .compact .card-body-custom { 
-    padding: calc(var(--pad-y)*.7) calc(var(--pad-x)*.7); 
+    padding: calc(var(--pad-y)*.6) calc(var(--pad-x)*.6); 
 }
 .compact .table-view td, .compact .table-view th { 
-    padding: .6rem .75rem; 
+    padding: .5rem .6rem; 
 }
 .compact .info-row {
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+    padding: 0.35rem;
+    margin-bottom: 0.4rem;
 }
 .compact .info-label {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 .compact .info-value {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 .compact .badge-custom {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.7rem;
 }
  
 /* (Req #2) Accesibilidad y motion */

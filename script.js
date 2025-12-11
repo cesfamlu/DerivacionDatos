@@ -160,6 +160,16 @@ const referralData =[
  "ges": "No",
  "descripcion": "Eco Ginecológica (Edad: 15 Años Y Mas) "
 },
+
+ {
+    "tipo": "Especialidad",
+    "via": "Correo Electronico",
+    "detalle": "cesfam.neurodiversa@munilaunion.cl",
+    "destino": "Centro Atencion Integracion al Desarrollo Infantoadolescente (CAIDIA)",
+    "ges": "No",
+    "descripcion": "Usuario evaluado en CNS o Control Adolescente, referido via correo electronico, contraloría por Referente Fonoaudióloga Foitzick"
+  },
+ 
 {
  "tipo": "Procedimiento",
  "via": "RAS",

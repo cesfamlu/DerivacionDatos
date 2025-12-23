@@ -1,714 +1,903 @@
 :root {
-    --color-primary: #0d6efd;
-    --color-success: #198754;
-    --color-info: #0dcaf0;
-    --color-warning: #ffc107;
-    --color-danger: #dc3545;
-    --color-medical: #2c5f7d;
-    --color-medical-light: #4a90b8;
-    
-    /* (Req #2) CSS Tokens */
-    --radius-lg: 14px;
-    --shadow-1: 0 2px 8px rgba(0,0,0,.06);
-    --shadow-2: 0 8px 24px rgba(0,0,0,.12);
-    /* (Req #2) Densidad compacta opcional */
-    --pad-y: 0.6rem; 
-    --pad-x: 0.8rem;
+    /* --- Paleta Light (Zen) --- */
+    --bg: #f8fafc;
+    --nav-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --text: #0f172a;
+    --text-light: #64748b;
+    --border: #e2e8f0;
 
-    /* --- INICIO: Inspiración de paleta de colores --- */
-    --color-primary: #0066cc; /* Sobrescribe el azul de bootstrap */
-    --color-primary-dark: #127986e8;
-    --color-primary-light: #3385d6;
-    --color-clinical: #0066cc;
-    --color-clinical-light: #e6f2ff;
-    --color-admin: #7c3aed;
-    --color-admin-light: #f3e8ff;
-    --color-support: #059669;
-    --color-support-light: #d1fae5;
-    --color-success: #10b981; /* Sobrescribe success */
-    --color-warning: #f59e0b; /* Sobrescribe warning */
-    --color-error: #ef4444; /* Sobrescribe danger */
-    --color-info: #3b82f6; /* Sobrescribe info */
-    --color-gray-50: #f9fafb;
-    --color-gray-100: #f3f4f6;
-    --color-gray-200: #e5e7eb;
-    --color-gray-300: #d1d5db;
-    --color-gray-400: #9ca3af;
-    --color-gray-500: #6b7280;
-    --color-gray-600: #4b5563;
-    --color-gray-700: #374151;
-    --color-gray-800: #1f2937;
-    --color-gray-900: #111827;
-    /* --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; */ /* No es necesario, ya se usa Inter */
-    --font-weight-light: 300;
-    --font-weight-normal: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --spacing-xs: 0.25rem;
+    --primary: #0097b2;
+    /* Turquesa CESFAM - Color principal del logo */
+    --primary-soft: #E0F7F4;
+    /* Fondo suave turquesa */
+    --primary-hover: #00897B;
+    /* Teal oscuro CESFAM */
+
+    --ges: #43A047;
+    /* Verde CESFAM para GES */
+    --ges-bg: #E8F5E9;
+
+    --radius: 24px;
+    /* Más redondeado estilo Google */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+    /* Sombras elevadas estilo Material Design */
+    --highlight: #fef08a;
+
+    /* Variables para espaciado */
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
-    --radius-sm: 0.375rem;
-    --radius-md: 0.5rem;
-    /* --- FIN: Inspiración de paleta de colores --- */
+
+    /* Variables para fuentes */
+    --font-weight-bold: 700;
+}
+
+/* --- Paleta Dark (Zen Focus) --- */
+body.dark-mode {
+    --bg: #0f172a;
+    --nav-bg: rgba(15, 23, 42, 0.95);
+    --card-bg: #1e293b;
+    --text: #f1f5f9;
+    --text-light: #94a3b8;
+    --border: #334155;
+
+    --primary: #4DD0E1;
+    /* Turquesa claro para modo oscuro */
+    --primary-soft: rgba(222, 238, 243, 0.15);
+    --primary-hover: #80DEEA;
+    /* Turquesa más claro para hover */
+
+    --ges: #66BB6A;
+    /* Verde claro para GES en modo oscuro */
+    --ges-bg: rgba(201, 255, 52, 0.15);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --highlight: #bceb2c;
+}
+
+/* Glassmorphism para modo oscuro */
+body.dark-mode .zen-nav {
+    background: rgba(15, 23, 42, 0.75);
+    /* Fondo oscuro semi-transparente */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Borde brillante sutil */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.2);
+    /* Sombra más profunda en dark mode */
+}
+
+/* Reset y Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex; /* (Req) Para footer pegajoso */
-    flex-direction: column; /* (Req) Para footer pegajoso */
+    overflow-y: scroll;
 }
 
-/* (Req) Contenedor principal para empujar el footer */
-.main-content {
-    flex-grow: 1;
+/* --- Navegación con Glassmorphism --- */
+.zen-nav {
+    padding: 0.8rem 1.1rem;
+    position: relative;
+    /* Cambiado de sticky para que no quede pegado al scroll */
+    background: rgba(255, 255, 255, 0.75);
+    /* Fondo semi-transparente para efecto glassmorphism */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    /* Efecto de vidrio esmerilado */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    /* Borde más sutil */
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 6px rgba(0, 0, 0, 0.04);
+    /* Sombra elevada premium */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* (Req #2) Afinar tipografía */
-h1,h2,h3{ letter-spacing: -.02em }
-.lead{ color:#eef6ff; opacity:.9 }
-
-/* (Req #2) Header + Franja institucional (Código anterior) */
-.header-section {
-    background: linear-gradient(135deg, #2f6482 0%, #376b8a 100%); /* (Punto 2) */
-    color: white;
-    padding: 2rem 20; /* (Req) Aumentado a 2rem para más espacio */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* (Punto 2) */
-    position: relative; 
-    border-bottom: none;
-}
- 
-.header-section::after{
-  content:""; 
-  position:absolute; left:0; right:0; bottom:0; 
-  height: 4px; /* (Punto 3) */
-  background: linear-gradient(to right, #e6b800 0%, #2f7bff 100%); /* (Punto 3) */
-  opacity:.95;
-}
-
-.header-section h1 {
-    font-size: 1.8rem; 
-    font-weight: 700;
-    margin: 0;
-    color: #f0f4f8; /* (Punto 4) */
-}
-
-.header-section p {
-    margin: 0.5rem 0 0 0;
-    opacity: 0.9;
-    font-size: 1.1rem;
-    color: #e5ecf1; /* (Punto 4) */
-    font-weight: 500; /* (Punto 4) */
-}
-/* Fin de estilos de header anterior */
-
-
-.filter-section {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 1rem;
-    box-shadow: var(--shadow-1);
-    margin-bottom: 1rem;
-}
-
-.search-input {
-    border-radius: 10px;
-    border: 2px solid #e0e0e0;
-    padding: 0.5rem 0.8rem;
-    transition: all 0.3s ease;
-    background: #fff; 
-    backdrop-filter: blur(2px);
-    font-size: 0.9rem;
-}
-
-.search-input:focus {
-    border-color: var(--color-medical);
-    box-shadow: 0 0 0 0.2rem rgba(44, 95, 125, 0.15);
-}
-
-.filter-select {
-    border-radius: 10px;
-    border: 2px solid #e0e0e0;
-    padding: 0.5rem 0.8rem;
-    transition: all 0.3s ease;
-    background: #fff; 
-    backdrop-filter: blur(2px);
-    font-size: 0.9rem;
-}
-
-.filter-select:focus {
-    border-color: var(--color-medical);
-    box-shadow: 0 0 0 0.2rem rgba(44, 95, 125, 0.15);
-}
-
-/* (Req #2) Botones filtro: estado activo más claro */
-.btn-filter {
-    border-radius: 10px;
-    padding: 0.4rem 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    color: #333;
-    border:1.5px solid rgba(13,110,253,.15);
-    background:#fff;
-    font-size: 0.9rem;
-}
-
-.btn-filter.active{
-    background: linear-gradient(135deg,#eaf2ff,#dbeafe);
-    border-color: var(--color-primary);
-    color: #000;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
- 
-.btn-outline-success, .btn-outline-primary, .btn-outline-danger, .btn-outline-secondary {
-  border-width: 1.5px
-}
-.btn-outline-success:active, .btn-outline-primary:active, .btn-outline-danger:active, .btn-outline-secondary:active {
-  transform: translateY(1px);
-}
-
-/* (Req #3) KPI Bar */
-.results-info {
-    background: white;
-    border-radius: 10px;
-    padding: 0.7rem 1rem;
-    margin-bottom: 0.8rem;
-    box-shadow: var(--shadow-1);
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    font-size: 0.9rem;
+    /* Esto asegura que el LOGO GIGANTE, el texto y los botones estén centrados verticalmente */
 }
 
-/* (Req #2) Cards */
-.card-referral {
-    border: none;
-    border-radius: var(--radius-lg); 
-    box-shadow: var(--shadow-1);
-    transition: all 0.3s ease;
-    margin-bottom: 1rem;
-    overflow: hidden;
+.brand-area {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    /* Eliminamos gap fijo para usar márgenes controlados en el texto */
+    user-select: none;
+}
+
+/* Contenedor del Logo: Ahora acepta los 240px pedidos */
+.logo-wrapper {
+    height: 240px;
+    /* Altura solicitada */
+    display: flex;
+    align-items: center;
+}
+
+.logo-wrapper img {
     height: 100%;
-    position: relative; /* (Req #2) */
-}
- 
-/* (Req #2) Banda de color por tipo */
-.card-referral::before{
-  content:""; 
-  position:absolute; 
-  inset:0 0 auto 0; 
-  height:4px; 
-  display:block;
-  background: var(--tipo-color, var(--color-medical));
+    width: auto;
+    object-fit: contain;
+    /* Asegura que el logo se vea completo sin deformarse */
+    transition: opacity 0.3s ease;
 }
 
-.card-referral:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-2);
-}
-
-/* (Req #2) Card Header Compacto */
-.card-header-custom {
-    padding: 0.5rem 0.7rem;
-    border-bottom: none;
+/* Estilos del Título */
+.brand-text {
+    margin-left: 7rem;
+    /* Ajustado para mejor cohesión visual con el logo - UX optimizado */
+    font-size: 1.5rem;
+    /* Un poco más grande para acompañar al logo */
+    line-height: 1.2;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    background: #fff;
+    /* Centra verticalmente el contenido */
 }
 
-.badge-tipo-especialidad {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+/* Logo del título como imagen */
+.title-logo {
+    height: auto;
+    max-height: 120px;
+    /* Altura máxima para que no sea demasiado grande */
+    width: auto;
+    max-width: 400px;
+    /* Ancho máximo razonable */
+    object-fit: contain;
+    transition: opacity 0.3s ease;
 }
 
-.badge-tipo-procedimiento {
-    background: linear-gradient(135deg, #06beb6 0%, #48b1bf 100%);
+.brand-text strong {
+    font-weight: 700;
+    color: var(--primary);
 }
 
-.badge-tipo-patologia {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+.brand-text .thin {
+    font-weight: 300;
+    color: var(--text-light);
 }
 
-.badge-ges-si {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: #000;
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
 }
 
-.badge-ges-no {
-    background: linear-gradient(135deg, #868f96 0%, #596164 100%);
+.icon-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-light);
+    padding: 0.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    /* Completamente redondeado estilo Google */
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* (Req #2) Badges ligeramente menos saturadas */
-.badge-custom {
-    padding: 0.35rem 0.7rem;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 0.75rem;
+.icon-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-soft);
+}
+
+.btn-dash {
+    background: var(--primary);
+    border: none;
     color: white;
-    filter: saturate(.92);
+    padding: 0.5rem 1.25rem;
+    border-radius: 24px;
+    /* Botón píldora estilo Google */
+    box-shadow: var(--shadow-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
-.card-body-custom {
-    padding: var(--pad-y) var(--pad-x);
-    flex-grow: 1;
+.btn-dash:hover {
+    background: var(--primary-hover);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.stats-pill {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: var(--border);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+/* --- Dashboard --- */
+.dashboard-panel {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    animation: slideDown 0.3s ease-out;
+}
+
+.metric-card {
+    background: var(--bg);
+    padding: 1.2rem;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid var(--border);
+    height: 100%;
     display: flex;
     flex-direction: column;
-}
- 
-.card-body-custom .info-container {
-    flex-grow: 1;
+    justify-content: center;
 }
 
-.info-row {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 0.6rem;
-    padding: 0.5rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    border: 1px solid #eee;
+.metric-val {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1.2;
 }
 
-.info-row i {
-    font-size: 1rem;
-    margin-right: 0.5rem;
-    color: var(--color-medical);
-    min-width: 20px;
-    padding-top: 2px;
-    opacity:.8; 
-    transform: translateY(1px);
-}
-
-.info-label {
+.metric-label {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     font-weight: 600;
-    color: #2c3e50; 
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
+    margin-top: 0.2rem;
 }
 
-.info-value {
-    color: #212529;
-    font-size: 0.9rem;
+/* --- Main Layout --- */
+.zen-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
 }
 
-.image-papel {
-    max-width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
- 
-.image-papel:hover {
-    transform: scale(1.1);
-}
-
-.no-results {
-    text-align: center;
-    padding: 3rem;
-    background: white;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-1);
-}
-
-.no-results i {
-    font-size: 4rem;
-    color: #6c757d;
-    margin-bottom: 1rem;
-}
-
-/* ----- INICIO CAMBIO FOOTER ----- */
-/* Eliminado: .footer-section (azul) */
-
-.view-toggle {
+/* Buscador */
+.search-container {
+    position: relative;
     display: flex;
+    align-items: center;
+}
+
+/* Separación adicional para resultados - UX mejorado */
+.results-area {
+    margin-top: 2.5rem;
+}
+
+#mainSearch {
+    width: 100%;
+    padding: 1rem 3rem 1rem 3.2rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    /* Extra redondeado para buscador */
+    color: var(--text);
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-sm);
+}
+
+#mainSearch:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.2rem;
+    color: var(--text-light);
+    font-size: 1.1rem;
+    pointer-events: none;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 9rem;
+    /* Mayor espacio para evitar clicks accidentales con el switcher - UX mejorado */
+    border: none;
+    background: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    opacity: 0.6;
+    transition: 0.2s;
+    margin-right: 0.5rem;
+    /* Separación adicional del switcher */
+}
+
+.clear-btn:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+/* Switcher Grid/List */
+.view-switcher {
+    display: flex;
+    background: var(--border);
+    padding: 4px;
+    border-radius: 12px;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.view-btn {
+    border: none;
+    background: none;
+    color: var(--text-light);
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.view-btn.active {
+    background: var(--card-bg);
+    color: var(--primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.view-btn:hover:not(.active) {
+    color: var(--text);
+}
+
+/* Filtros */
+.filter-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    /* Aumentado de 700 para mejor jerarquía visual */
+    color: var(--text);
+    /* Cambiado de text-light para mayor contraste - UX mejorado */
+    opacity: 0.7;
+    /* Manteniendo sutileza pero con mejor legibilidad */
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.5px;
+}
+
+.quick-filters {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+
+.chip {
+    padding: 0.45rem 1.1rem;
+    border-radius: 20px;
+    /* Chips redondeados estilo Material */
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+}
+
+.chip:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-1px);
+}
+
+.chip.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.chip-ges.active {
+    background: var(--ges);
+    border-color: var(--ges);
+}
+
+.chip-no-ges.active {
+    background: var(--text-light);
+    border-color: var(--text-light);
+    color: white;
+}
+
+.chip-dest {
+    border-style: dashed;
+}
+
+/* --- Resultados: Grid --- */
+.results-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.card-zen {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    /* Tarjetas redondeadas estilo Google */
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    /* Altura mínima para consistencia visual - UX mejorado */
+}
+
+.card-zen:hover {
+    border-color: var(--primary);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    /* Elevación más dramática estilo Material */
+}
+
+.card-zen .type {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+}
+
+.card-zen .title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    color: var(--text);
+    /* Limitar a 3 líneas máximo para consistencia */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.info-item {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 0.4rem;
+    align-items: flex-start;
+}
+
+.info-item i {
+    color: var(--primary);
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.badge-ges {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--ges-bg);
+    color: var(--ges);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+}
+
+.badge-no-ges {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: var(--border);
+    color: var(--text-light);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+}
+
+/* --- Resultados: Lista --- */
+.results-list {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.list-item {
+    display: grid !important;
+    grid-template-columns: 130px 1fr 120px 200px 100px !important;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    font-size: 0.9rem;
+    gap: 1rem;
+}
+
+.list-item:hover {
+    background-color: var(--primary-soft);
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.list-header {
+    background: var(--bg);
+    font-weight: 700;
+    color: var(--text-light);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    cursor: default;
+    border-bottom: 1px solid var(--border);
+}
+
+.badge-ges-sm {
+    background: var(--ges-bg);
+    color: var(--ges);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.badge-no-ges-sm {
+    background: var(--border);
+    color: var(--text-light);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-align: center;
+    display: inline-block;
+}
+
+/* --- Feedback --- */
+.toast-custom {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    background: var(--text);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
 }
 
-.table-view {
-    display: none;
-}
- 
-/* (Req #2) Tabla "Enterprise" */
-.table-responsive{ 
-    max-height: 70vh; 
-    border-radius: 10px;
-    box-shadow: var(--shadow-1);
-}
- 
-.table-view table {
-    background: white;
-    overflow: hidden;
-    margin-bottom: 0; 
+.toast-custom.show {
+    transform: translateX(-50%) translateY(0);
 }
 
-.table-view thead {
-    background: var(--color-medical);
-    color: white;
-}
- 
-.table-view thead th {
-    position: sticky; 
-    top: 0; 
-    z-index: 1;
-    background: var(--color-medical); 
+.empty-state {
+    text-align: center;
+    padding: 5rem 1rem;
+    color: var(--text-light);
 }
 
-.table-view th {
-    font-weight: 600;
-    padding: var(--pad-y) var(--pad-x);
-}
-
-.table-view td {
-    padding: var(--pad-y) var(--pad-x);
-    vertical-align: middle;
-}
- 
-.table tbody tr:hover{ 
-    background: #f6fbff; 
-}
-
-/* (Req 1) Estilos para el logo en el header */
-.header-logo {
-    max-height: 160px; /* Reducido para el nuevo header */
-    width: auto;   
-    max-width: 100%;  
-    object-fit: contain;
-}
- 
-/* (Req #6) Estilos para el header (inspirado) */
-.main-header {
-    /* Se quita el sticky de aquí */
-}
-
-/* (Req #8) Barra negra sticky */
-.header-top {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: var(--shadow-2); /* Sombra para la barra pegajosa */
-}
-
-.header-main {
-    /* De bg-white a gradiente */
-    background: linear-gradient(135deg, #003d82 0%, var(--color-primary) 100%);
-    color: white;
-}
- 
-.header-main h1, .header-main h2 {
-    color: white; /* Asegura texto blanco en fondo azul */
-}
- 
-/* (Req #9) H1 y H2 movidos levemente a la izquierda */
-.header-main h1 {
-    margin-left: -90px; /* Ajustado de -70px */
-}
-.header-main h2 {
-    margin-left: -90px; /* Añadido para alinear con H1 */
-}
-/* Fin (Req #9) */
- 
-/* Nueva Vista Gráfica para KPIs */
-.kpi-bars { width: 100%; }
-.kpi-bars .kpi-group { margin-bottom: 0.75rem; }
-.kpi-bars .kpi-group-title {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 0.25rem;
-    text-transform: uppercase;
-}
-.kpi-bars .kpi-bar-item {
+.empty-icon-container {
+    width: 80px;
+    height: 80px;
+    background: var(--bg);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
     display: flex;
     align-items: center;
-    margin-bottom: 4px;
-    font-size: 0.8rem;
-}
-.kpi-bars .kpi-bar-label {
-    width: 100px; /* Ancho fijo para alinear etiquetas */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 10px;
-    color: #333;
-}
-.kpi-bars .kpi-bar-track {
-    flex-grow: 1;
-    background: #e9ecef;
-    border-radius: 4px;
-    height: 18px;
-    overflow: hidden;
-    position: relative;
-}
-.kpi-bars .kpi-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-.kpi-bars .kpi-bar-value {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: white;
-    padding: 0 0.5rem;
-}
-.kpi-bars .text-dark {
-    color: #000 !important;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--border);
 }
 
-/* (Req #7) Footer Nuevo */
-.main-footer { 
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
-    color: white; 
-    margin-top: auto; /* (Req) Esto es clave para el footer pegajoso */
-    padding: var(--spacing-2xl) 0 var(--spacing-lg); 
+mark {
+    background: var(--highlight);
+    color: #000;
+    border-radius: 3px;
+    padding: 0 1px;
 }
-.footer-content { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-    gap: var(--spacing-2xl); 
-    margin-bottom: var(--spacing-2xl); 
+
+/* Animaciones */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.footer-section { 
-    display: flex; 
-    flex-direction: column; 
-    gap: var(--spacing-md); 
+
+/* Responsive */
+@media (max-width: 992px) {
+    .list-item {
+        grid-template-columns: 100px 1fr 100px;
+    }
+
+    .list-item>div:nth-child(3),
+    .list-item>div:nth-child(4) {
+        display: none;
+    }
+
+    /* Ocultar vía/destino en tablet */
+    .list-header>div:nth-child(3),
+    .list-header>div:nth-child(4) {
+        display: none;
+    }
 }
-.footer-title { 
-    font-size: 1.125rem; 
-    font-weight: var(--font-weight-bold); 
-    margin-bottom: var(--spacing-sm); 
-    color: white; 
+
+@media (max-width: 768px) {
+    .zen-main {
+        padding: 1.5rem 1rem;
+    }
+
+    .search-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    #mainSearch {
+        padding-right: 1rem;
+    }
+
+    .clear-btn {
+        top: 0.9rem;
+        right: 0.8rem;
+    }
+
+    .view-switcher {
+        align-self: flex-start;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .view-btn {
+        flex: 1;
+        text-align: center;
+    }
+
+    .list-item {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 0.2rem;
+    }
+
+    .list-header {
+        display: none;
+    }
+
+    .list-item>div:first-child {
+        grid-column: 1 / -1;
+        font-size: 0.75rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .list-item>div:nth-child(2) {
+        grid-column: 1 / 2;
+    }
+
+    /* Título */
+    .list-item>div:last-child {
+        grid-column: 2 / 3;
+        justify-self: end;
+    }
+
+    /* Badge */
+
+    /* Ajuste responsivo para el logo gigante */
+    .logo-wrapper {
+        height: 120px;
+    }
+
+    /* En móviles lo reducimos para no perder tanta pantalla */
 }
-.footer-text { 
-    font-size: 0.875rem; 
-    color: rgba(255, 255, 255, 0.8); 
-    line-height: 1.6; 
-    display: flex; 
-    align-items: center; 
-    gap: var(--spacing-sm); 
+
+
+.main-footer {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    color: white;
+    margin-top: auto;
+    /* (Req) Esto es clave para el footer pegajoso */
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
 }
+
+.footer-content {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.footer-title {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-sm);
+    color: white;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
 /* Icono de Bootstrap en vez de SVG custom */
 .footer-text i {
     font-size: 1.125rem;
     flex-shrink: 0;
     opacity: 0.8;
 }
-.footer-links { 
-    list-style: none; 
-    padding: 0; /* Reset de padding */
-    margin: 0; /* Reset de margin */
-    display: flex; 
-    flex-direction: column; 
-    gap: var(--spacing-sm); 
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    /* Reset de padding */
+    margin: 0;
+    /* Reset de margin */
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
 }
-.footer-link { 
-    color: rgba(255, 255, 255, 0.8); 
-    text-decoration: none; 
-    font-size: 0.875rem; 
-    transition: all 0.2s ease; /* Transición genérica */
-    display: inline-block; 
+
+.footer-link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    /* Transición genérica */
+    display: inline-block;
 }
-.footer-link:hover { 
-    color: white; 
-    transform: translateX(4px); 
+
+.footer-link:hover {
+    color: white;
+    transform: translateX(4px);
 }
-.footer-bottom { 
-    padding-top: var(--spacing-xl); 
-    border-top: 1px solid rgba(255, 255, 255, 0.1); 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    flex-wrap: wrap; 
-    gap: var(--spacing-md); 
+
+.footer-bottom {
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
 }
-.footer-copyright { 
-    font-size: 0.875rem; 
-    color: rgba(255, 255, 255, 0.7); 
+
+.footer-copyright {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
 }
-.footer-meta { 
-    display: flex; 
-    align-items: center; 
-    gap: var(--spacing-md); 
-    font-size: 0.75rem; 
-    color: rgba(255, 255, 255, 0.6); 
+
+.footer-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
 }
-.footer-separator { opacity: 0.5; }
+
+.footer-separator {
+    opacity: 0.5;
+}
+
 /* Fin (Req #7) Footer */
 
+/* Paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.pagination-btn,
+.pagination-num {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-num:hover:not(.active) {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination-num.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+.pagination-numbers {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.pagination-dots {
+    padding: 0 0.5rem;
+    color: var(--text-light);
+}
 
 @media (max-width: 768px) {
-    /* (Req #6) Ajustes responsivos para el nuevo header */
-    .header-top {
-        font-size: 0.8rem;
-        /* El sticky también aplica en móvil */
-    }
-    .header-top .header-info {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 0.5rem;
-    }
-    .header-top .header-user {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    .header-main .row {
-        justify-content: center;
-        text-align: center;
-    }
-    .header-main h1 {
-        font-size: 1.3rem;
-        margin-left: 0; /* (Req) Resetear margen en móvil */
-    }
-    .header-main h2 {
-        font-size: 1.0rem;
-        margin-left: 0; /* (Req) Resetear margen en móvil */
-    }
-    .header-logo {
-        max-height: 110px; /* (Req) Aumentado de 60px */
-    }
-    /* Fin (Req #6) */
-
-    .filter-section {
-        padding: 0.8rem;
+    .pagination-btn span {
+        display: none;
     }
 
-    .btn-filter {
-        width: 100%;
-        margin-bottom: 0.4rem;
+    .pagination-num {
+        padding: 0.5rem 0.75rem;
     }
-
-    .results-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-    }
-     
-    .card-referral {
-         margin-bottom: 0.8rem;
-    }
-     
-    .kpi-bars .kpi-bar-label {
-        width: 80px; /* Menos espacio en móvil */
-    }
-}
-
-.fade-in {
-    animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
- 
-/* (Req #2) Densidad compacta */
-.compact .card-body-custom { 
-    padding: calc(var(--pad-y)*.6) calc(var(--pad-x)*.6); 
-}
-.compact .table-view td, .compact .table-view th { 
-    padding: .5rem .6rem; 
-}
-.compact .info-row {
-    padding: 0.35rem;
-    margin-bottom: 0.4rem;
-}
-.compact .info-label {
-    font-size: 0.8rem;
-}
-.compact .info-value {
-    font-size: 0.8rem;
-}
-.compact .badge-custom {
-    padding: 0.25rem 0.6rem;
-    font-size: 0.7rem;
-}
- 
-/* (Req #2) Accesibilidad y motion */
-:focus-visible{
-  outline: 3px solid rgba(13,110,253,.35);
-  outline-offset: 2px;
-  border-radius: 8px;
-}
- 
-@media (prefers-reduced-motion: reduce){
-  *{ animation: none !important; transition: none !important; }
-}
-
-/* --- Custom UI improvements: mini-bar, cards scroll, back-to-top, pagination --- */
-/* Sticky mini bar that stays near the top of the viewport when scrolling. */
-.mini-bar {
-    background: white;
-    border-radius: 10px;
-    box-shadow: var(--shadow-1);
-    padding: 0.4rem 0.8rem;
-    position: sticky;
-    top: 3.5rem; /* leave space for the sticky top header */
-    z-index: 90;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.9rem;
-}
-
-.mini-bar input {
-    min-width: 150px;
-}
-
-/* Container around the cards view that adds an internal scroll like the table. */
-.cards-container {
-    max-height: 70vh;
-    overflow-y: auto;
-}
-
-/* Floating back-to-top button */
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 300;
-    display: none;
-    border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    box-shadow: var(--shadow-2);
-}
-
-.back-to-top i {
-    margin: 0;
-}
-
-/* Pagination control styles */
-.pagination-controls button {
-    margin: 0 0.25rem;
-}
-
-.pagination-controls button.active {
-    font-weight: bold;
 }

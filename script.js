@@ -248,12 +248,12 @@ function setTheme(theme) {
 
     // Actualizar Logo CESFAM
     if (UI.logo) {
-        UI.logo.src = theme === 'dark' ? 'img/CESFAM_BLANCO.png' : 'img/CESFAM.png';
+        UI.logo.src = theme === 'dark' ? 'CESFAM_BLANCO.png' : 'CESFAM.png';
     }
 
     // Actualizar Logo del Título
     if (UI.titleLogo) {
-        UI.titleLogo.src = theme === 'dark' ? 'img/titulo_blanco.png' : 'img/titulo.png';
+        UI.titleLogo.src = theme === 'dark' ? 'titulo_blanco.png' : 'titulo.png';
     }
 
     localStorage.setItem('zen-theme', theme);

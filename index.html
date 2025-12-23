@@ -1,232 +1,169 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Datos de Derivaciones Médicas - CESFAM La Unión</title>
+    <title>CESFAM La Unión | Zen Pro</title>
 
+    <!-- Fuentes y Estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="1.5.png">
     <link rel="icon" type="image/png" sizes="16x16" href="1.5.png">
     <link rel="shortcut icon" href="1.5.png">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <!-- (Req #1) Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
- 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cesfam-turquoise': '#00BFA6',
+                        'cesfam-teal': '#00897B',
+                        'cesfam-green': '#43A047',
+                        'cesfam-blue': '#0288D1',
+                        'cesfam-dark': '#01579B',
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <!-- Header -->
-    <header class="main-header">
-    
-        <div class="header-top bg-dark text-white py-2" style="position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-2);">
-            <div class="container">
-                <div class="d-flex justify-content-between align-items-center flex-wrap">
-                    <div class="header-info d-flex align-items-center">
-                        <div class="d-flex align-items-center me-3">
-                            <i class="bi bi-calendar3 me-2"></i>
-                            <span id="currentDateTime">Cargando fecha y hora...</span>
-                        </div>
-                    </div>
-                    <div class="header-user d-flex gap-2">
-                        <a class="btn btn-sm btn-outline-light" href="https://cesfamlu.github.io/links" target="_blank">
-                            <i class="bi bi-star-fill me-1"></i>
-                            <span>Directorio Links</span>
-                        </a>
-                        <a class="btn btn-sm btn-outline-light" href="https://cesfamlu.github.io/FormularioSoporte" target="_blank">
-                            <i class="bi bi-headset me-1"></i>
-                            <span>Soporte Informática</span>
-                        </a>
-                        <a class="btn btn-sm btn-outline-light" href="https://cesfamlaunion.cl">
-                            <i class="bi bi-display me-1"></i>
-                            <span>CESFAM La Unión</span>
-                        </a>
-                    </div>
+
+<body class="light-mode">
+
+    <!-- Navegación -->
+    <nav class="zen-nav">
+        <div class="nav-content">
+            <div class="brand-area" onclick="window.location.reload()" style="cursor: pointer;">
+                <!-- Logo Dinámico Grande -->
+                <div class="logo-wrapper">
+                    <!-- Asegúrate de que tus imágenes existan en la carpeta img/ -->
+                    <img id="appLogo" src="img/CESFAM.png" alt="CESFAM La Unión" class="img-fluid">
                 </div>
+
+                <!-- Logo/Título como imagen -->
+                <div class="brand-text d-none d-sm-block">
+                    <img src="img/titulo.png" alt="Datos de Derivación" class="title-logo" id="titleLogo">
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://cesfamlu.github.io/links" target="_blank" class="icon-btn" title="Enlaces Útiles">
+                    <i class="bi bi-link-45deg"></i>
+                </a>
+                <button id="themeToggle" class="icon-btn" title="Alternar Modo Oscuro (D)">
+                    <i class="bi bi-moon-stars"></i>
+                </button>
+                <button id="toggleDash" class="btn-dash" title="Ver Estadísticas">
+                    <i class="bi bi-speedometer2"></i> <span class="d-none d-sm-inline">Dashboard</span>
+                </button>
+                <div id="stats" class="stats-pill d-none d-md-block">Cargando...</div>
             </div>
         </div>
-        
-        
-        <div class="header-main">
-            <div class="container py-3">
-                <div class="row align-items-center justify-content-between">
-                    
-                    <div class="col-md-auto mb-3 mb-md-0">
-                        <img src="8.png" alt="Logo CESFAM La Unión" class="header-logo">
-                    </div>
-                    
-                    <div class="col-md-auto">
-                        <div>
-                          
-                            <h1 class="h2 mb-0 text-right text-md-end" style="font-weight: 600; margin-left: -90px;">Datos de Derivaciones</h1>
-                            <h2 class="h5 mb-0 text-center text-md-end" style="font-weight: 500; opacity: .8; margin-left: -90px;">CESFAM La Unión</h2>
-                        </div>
-                    </div>
+    </nav>
 
-                </div>
+    <main class="zen-main">
+        <!-- Dashboard (Oculto por defecto) -->
+        <section id="dashboardPanel" class="dashboard-panel mb-4 shadow-sm" style="display: none;">
+            <div class="row g-3" id="dashMetrics">
+                <!-- Se llena dinámicamente -->
             </div>
-        </div>
-    </header>
+        </section>
 
+        <!-- Área de Control -->
+        <section class="search-section">
+            <div class="search-container mb-4">
+                <i class="bi bi-search search-icon"></i>
+                <input type="text" id="mainSearch" placeholder="Busca especialidad, destino, vía o patología..."
+                    autofocus autocomplete="off">
+                <button id="clearSearch" class="clear-btn" title="Limpiar búsqueda (Esc)">
+                    <i class="bi bi-x-circle-fill"></i>
+                </button>
 
-    <main class="main-content">
-        <div class="container mt-4">
-            <!-- Filtros -->
-            <div class="filter-section fade-in">
-                <div class="row g-3">
-                    <!-- Búsqueda General -->
-                    <div class="col-md-12">
-                        <label for="searchGeneral" class="form-label fw-bold"><i class="bi bi-search"></i> Búsqueda General</label>
-                        <input type="text" id="searchGeneral" class="form-control search-input" placeholder="Buscar por descripción, destino, tipo... (Atajo: /)">
-                    </div>
-
-                    <!-- Filtros por categorías -->
-                    <div class="col-md-3">
-                        <label for="filterTipo" class="form-label fw-bold"><i class="bi bi-tags"></i> Tipo</label>
-                        <select id="filterTipo" class="form-select filter-select">
-                            <option value="">Todos</option>
-                            <option value="Especialidad">Especialidad</option>
-                            <option value="Procedimiento">Procedimiento</option>
-                            <option value="Patología">Patología</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="filterVia" class="form-label fw-bold"><i class="bi bi-signpost-split"></i> Vía</label>
-                        <select id="filterVia" class="form-select filter-select">
-                            <option value="">Todas</option>
-                            <option value="RAS">RAS</option>
-                            <option value="GES">GES</option>
-                            <option value="HD">HD (Hospital Digital)</option>
-                            <option value="Email">Email</option>
-                            <option value="Papel">Papel</option>
-                            <option value="Telefónica">Telefónica</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label for="filterDestino" class="form-label fw-bold"><i class="bi bi-pin-map"></i> Destino</label>
-                        <select id="filterDestino" class="form-select filter-select">
-                            <option value="">Todos</option>
-                          
-                        </select>
-                    </div>
-
-                    <div class="col-md-3">
-                        <label class="form-label fw-bold"><i class="bi bi-shield-check"></i> Estado GES (Atajo: g)</label>
-                        <div class="d-flex gap-2 mt-2">
-                            <button class="btn btn-primary btn-filter flex-fill active" data-ges="all">Todos</button>
-                            <button class="btn btn-success btn-filter flex-fill" data-ges="Si">Solo GES</button>
-                            <button class="btn btn-secondary btn-filter flex-fill" data-ges="No">No GES</button>
-                        </div>
-                    </div>
-
-                    <!-- Botones de acción -->
-                    <div class="col-md-12">
-                        <div class="d-flex gap-2 flex-wrap">
-                            <button id="btnClearFilters" class="btn btn-outline-danger"><i class="bi bi-x-circle"></i> Limpiar Filtros</button>
-                            <button id="btnToggleView" class="btn btn-outline-primary"><i class="bi bi-grid-3x3"></i> Vista Tabla (t)</button>
-                             <!--  <button id="btnExport" class="btn btn-outline-success"><i class="bi bi-download"></i> Exportar CSV</button>*-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mini sticky bar added for quick search and actions
-            <div id="miniBar" class="mini-bar d-flex flex-wrap gap-2 align-items-center mb-3">
-                <input type="text" id="miniSearch" class="form-control flex-grow-1" placeholder="Buscar en resultados...">
-                <span id="miniResults" class="badge bg-primary">0</span>
-                <button id="miniClear" class="btn btn-outline-danger btn-sm" onclick="clearFilters()"><i class="bi bi-x-circle"></i></button>
-                <button id="miniToggleView" class="btn btn-outline-primary btn-sm"><i class="bi bi-grid-3x3"></i> Vista Tabla (t)</button>
-                <button id="btnDensity" class="btn btn-outline-secondary btn-sm"><i class="bi bi-arrows-collapse"></i> Compacta</button>
-            </div> --> 
-            
-            <!-- (Req #3) Información de Resultados y KPIs -->
-            <div class="results-info fade-in flex-wrap gap-2">
-            <div>
-                <strong><i class="bi bi-list-check"></i> Resultados:</strong>
-                <span id="resultsCount" class="badge bg-primary ms-2">0</span>
-            </div>
-            <div class="ms-auto">
-                <small class="text-muted">Total de registros: <span id="totalCount">0</span></small>
-            </div>
-            <!-- Mini Dashboard KPI + Botón Densidad -->
-            <div class="w-100 pt-2 d-flex gap-2 flex-wrap align-items-center">
-                <div id="miniKpis" class="d-flex gap-2 flex-wrap flex-grow-1">
-                <!-- KPIs se renderán aquí -->
-                </div>
-               <!--  <div class="btn-group btn-group-sm ms-auto" role="group" aria-label="Controles de vista de resultados">
-                    <button id="btnKpiToggle" class="btn btn-outline-secondary">
-                    <i class="bi bi-bar-chart-line"></i> Gráfico
+                <div class="view-switcher ms-3">
+                    <button id="viewGrid" class="view-btn" title="Vista Cuadrícula">
+                        <i class="bi bi-grid-3x3-gap"></i>
                     </button>
-                    <button id="btnDensity" class="btn btn-outline-secondary">
-                    <i class="bi bi-arrows-collapse"></i> Compacta
+                    <button id="viewList" class="view-btn active" title="Vista Lista">
+                        <i class="bi bi-list-ul"></i>
                     </button>
-                </div>-->
-            </div>
-            </div>
-
-
-            <!-- Vista de Cards -->
-            <div id="cardsContainer" class="cards-container">
-                <div id="cardsView" class="row">
-                    <!-- Los cards se generarán dinámicamente aquí -->
                 </div>
             </div>
 
-            <!-- Pagination controls moved above -->
-
-            <!-- Vista de Tabla -->
-            <div id="tableView" class="table-view">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th>Tipo</th>
-                                <th>Descripción</th>
-                                <th>Vía</th>
-                                <th>Destino</th>
-                                <th>GES</th>
-                                <th>Detalle</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-                            <!-- Las filas se generarán dinámicamente aquí -->
-                        </tbody>
-                    </table>
+            <!-- Filtros Rápidos -->
+            <div class="filter-group mb-3">
+                <p class="filter-label">Filtrar por Tipo</p>
+                <div class="quick-filters" id="typeFilters">
+                    <button class="chip active" data-filter="all">Todo</button>
+                    <button class="chip" data-filter="Especialidad">Especialidad</button>
+                    <button class="chip" data-filter="Procedimiento">Procedimiento</button>
+                    <button class="chip" data-filter="Patología">Patología</button>
+                    <button class="chip chip-ges" data-filter="ges"> GES </button>
+                    <button class="chip chip-no-ges" data-filter="no-ges"> No GES </button>
                 </div>
             </div>
 
-            <!-- Pagination controls -->
-            <div id="pagination" class="pagination-controls d-flex justify-content-center align-items-center mt-3"></div>
+            <div class="filter-group">
+                <p class="filter-label">Destinos Frecuentes</p>
+                <div class="quick-filters" id="destFilters">
+                    <button class="chip chip-dest" data-dest="Hospital Base Valdivia"
+                        title="Hospital Base Valdivia">HBV</button>
+                    <button class="chip chip-dest" data-dest="Hospital La Union" title="Hospital La Unión">HLU</button>
+                    <button class="chip chip-dest" data-dest="CESFAM La Unión" title="CESFAM La Unión">CESFAM</button>
+                    <button class="chip chip-dest" data-dest="Hospital Digital" title="Hospital Digital">HD</button>
+                </div>
+            </div>
+        </section>
 
-            <!-- No hay resultados -->
-            <div id="noResults" class="no-results" style="display: none;">
+        <!-- Resultados -->
+        <section id="contentView" class="mt-4 results-area">
+            <!-- Grid o Lista se inyecta aquí -->
+        </section>
+
+        <!-- Estado Vacío -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-icon-container">
                 <i class="bi bi-search"></i>
-                <h3>No se encontraron resultados</h3>
-                <p class="text-muted">Intenta ajustar los filtros de búsqueda</p>
             </div>
+            <h3>Sin resultados</h3>
+            <p>No encontramos coincidencias para tu búsqueda.</p>
+            <button class="btn btn-sm btn-outline-primary mt-2" onclick="resetFilters()">
+                Limpiar filtros
+            </button>
         </div>
+
+        <!-- Paginador -->
+        <div id="pagination" class="pagination-container"></div>
     </main>
 
-    <!-- (Req #7) Footer Nuevo (reemplazando el anterior) -->
+    <!-- Feedback Visual -->
+    <div id="copyToast" class="toast-custom">
+        <i class="bi bi-clipboard-check"></i> Copiado al portapapeles
+    </div>
+
+
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
                 <section class="footer-section">
                     <h3 class="footer-title">Enlaces</h3>
                     <ul class="footer-links">
-                        <li><a class="footer-link" href="#" onclick="window.scrollTo({top:0, behavior:'smooth'});return false;">Volver arriba</a></li>
-                        <li><a class="footer-link" href="https://www.minsal.cl" target="_blank">Ministerio de Salud</a></li>
+                        <li><a class="footer-link" href="#"
+                                onclick="window.scrollTo({top:0, behavior:'smooth'});return false;">Volver arriba</a>
+                        </li>
+                        <li><a class="footer-link" href="https://www.minsal.cl" target="_blank">Ministerio de Salud</a>
+                        </li>
                         <li><a class="footer-link" href="https://www.gob.cl" target="_blank">Gobierno de Chile</a></li>
                     </ul>
                 </section>
-                
+
                 <section class="footer-section">
                     <h3 class="footer-title">Contacto</h3>
                     <p class="footer-text">
@@ -245,21 +182,28 @@
                     <h3 class="footer-title">CESFAM La Unión</h3>
                     <ul class="footer-links">
                         <!-- Corregido: Comillas en href -->
-                        <li><a class="footer-link" href="https://www.facebook.com/cesfamlu/?locale=es_LA" target="_blank">Facebook</a></li>
-                        <li><a class="footer-link" href="https://www.youtube.com/@cesfamlu" target="_blank">Youtube</a></li>
-                        <li><a class="footer-link" href="https://www.instagram.com/cesfamlu/?hl=es" target="_blank">Instagram</a></li>
+                        <li><a class="footer-link" href="https://www.facebook.com/cesfamlu/?locale=es_LA"
+                                target="_blank">Facebook</a></li>
+                        <li><a class="footer-link" href="https://www.youtube.com/@cesfamlu" target="_blank">Youtube</a>
+                        </li>
+                        <li><a class="footer-link" href="https://www.instagram.com/cesfamlu/?hl=es"
+                                target="_blank">Instagram</a></li>
                     </ul>
                 </section>
-                
+
                 <section class="footer-section">
                     <h3 class="footer-title">Recursos</h3>
                     <ul class="footer-links">
-                        <li><a class="footer-link" href="https://drive.google.com/drive/folders/1bpBIxsCke_ICx_e3T2d7iy3wWngUABLl?usp=sharing" target="_blank">Biblioteca CESFAM </a></li>
-                        <li><a class="footer-link" href="https://onedrive.live.com/?id=69AA6CC0DFCF3C18!223356&resid=69AA6CC0DFCF3C18!223356&ithint=folder&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvcyFBaGc4ejlfQWJLcHBqZEI4Mm5mLU5iM1JqVTVKS0E&cid=69aa6cc0dfcf3c18" target="_blank">Centro Integral</a></li>
+                        <li><a class="footer-link"
+                                href="https://drive.google.com/drive/folders/1bpBIxsCke_ICx_e3T2d7iy3wWngUABLl?usp=sharing"
+                                target="_blank">Biblioteca CESFAM </a></li>
+                        <li><a class="footer-link"
+                                href="https://onedrive.live.com/?id=69AA6CC0DFCF3C18!223356&resid=69AA6CC0DFCF3C18!223356&ithint=folder&migratedtospo=true&redeem=aHR0cHM6Ly8xZHJ2Lm1zL2YvcyFBaGc4ejlfQWJLcHBqZEI4Mm5mLU5iM1JqVTVKS0E&cid=69aa6cc0dfcf3c18"
+                                target="_blank">Centro Integral</a></li>
                     </ul>
                 </section>
             </div>
-            
+
             <div class="footer-bottom">
                 <div class="footer-copyright">© <span id="year">2025</span> CESFAM La Unión. Area de Informática.</div>
                 <div class="footer-meta">
@@ -271,13 +215,9 @@
         </div>
     </footer>
 
-    <!-- Floating back-to-top button -->
-    <button id="btnBackTop" class="btn btn-primary back-to-top"><i class="bi bi-arrow-up"></i></button>
 
-    <!-- (Req #1) Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    
-    <!-- (Req) Lógica separada -->
+
     <script src="script.js"></script>
 </body>
+
 </html>
